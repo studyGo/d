@@ -19,7 +19,7 @@ func main() {
 		if len(os.Args) == 1 {
 			os.Exit(0)
 		} else if len(os.Args) == 2 {
-			cmd = exec.Command(os.Args[1], "")
+			cmd = exec.Command(os.Args[1])
 		} else {
 			cmd = exec.Command(os.Args[1], os.Args[2:]...)
 		}
