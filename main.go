@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"strconv"
+	"syscall"
 )
 
 func main() {
@@ -50,11 +51,8 @@ func main() {
 		}
 
 		pid, _ := strconv.Atoi(string(data[:len]))
-		p, err := os.FindProcess(pid)
-		if err != nil {
-			log.Fatal(err)
-		}
-		p.Kill()
+		syscall.Kill(pid, syscall.SIGTERM)
+		syscall.Kill(pid, syscall.SIGKILL)
 		os.Exit(0)
 	case "reload":
 	case "watch":
