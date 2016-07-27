@@ -53,6 +53,7 @@ func main() {
 		pid, _ := strconv.Atoi(string(data[:len]))
 		syscall.Kill(pid, syscall.SIGTERM)
 		syscall.Kill(pid, syscall.SIGKILL)
+		os.Remove("./lock.pid")
 		os.Exit(0)
 	case "reload":
 	case "watch":
